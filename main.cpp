@@ -107,7 +107,7 @@ struct Updater
 {
     static float updateValue(U* that, float* valueToUpdateTo)        //10
     {
-        if (that != nullptr && valueToUpdate != nullptr)
+        if (that != nullptr && valueToUpdateTo != nullptr)
         {
             std::cout << "U's floatU1 value: " << that->floatU1 << std::endl;
             that->floatU1 = *valueToUpdateTo;
