@@ -68,8 +68,11 @@ struct Comparator                              //4
 {
     T* compare(T* a, T* b) //5
     {
-        if( a->value < b->value ) return a;
-        if( a->value > b->value ) return b;
+        if (a != nullptr && b != nullptr)
+        {
+            if( a->value < b->value ) return a;
+            if( a->value > b->value ) return b;
+        }
         return nullptr;
     }
 };
@@ -79,19 +82,24 @@ struct U
     float floatU1 { 0 }, floatU2 { 0 };
     float updateValue(float* valueToUpdateTo)      //12
     {
-        std::cout << "U's floatU1 value: " << this->floatU1 << std::endl;
-        this->floatU1 = *valueToUpdateTo;
-        std::cout << "U's floatU1 updated value: " << this->floatU1 << std::endl;
-        while( std::abs(this->floatU2 - this->floatU1) > 0.001f )
+        if (valueToUpdateTo != nullptr)
         {
+            std::cout << "U's floatU1 value: " << this->floatU1 << std::endl;
+            this->floatU1 = *valueToUpdateTo;
+            std::cout << "U's floatU1 updated value: " << this->floatU1 << std::endl;
+            while( std::abs(this->floatU2 - this->floatU1) > 0.001f )
+            {
             /*
              write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
              */
-            this->floatU2 += (this->floatU1 < this->floatU2) ? -1.0f : 1.0f;
-            std::cout << "U's floatU2 temporary value is " << this->floatU2 << std::endl;
+                this->floatU2 += (this->floatU1 < this->floatU2) ? -1.0f : 1.0f;
+                std::cout << "U's floatU2 temporary value is " << this->floatU2 << std::endl;
+            }
+            std::cout << "U's floatU2 updated value: " << this->floatU2 << std::endl;
+            return this->floatU2 * this->floatU1;
         }
-        std::cout << "U's floatU2 updated value: " << this->floatU2 << std::endl;
-        return this->floatU2 * this->floatU1;
+        std::cout << "Warning. Passed argument is nullptr!\n";
+        return 0.0f;
     }
 };
 
@@ -99,19 +107,24 @@ struct Updater
 {
     static float updateValue(U* that, float* valueToUpdateTo)        //10
     {
-        std::cout << "U's floatU1 value: " << that->floatU1 << std::endl;
-        that->floatU1 = *valueToUpdateTo;
-        std::cout << "U's floatU1 updated value: " << that->floatU1 << std::endl;
-        while( std::abs(that->floatU2 - that->floatU1) > 0.001f )
+        if (that != nullptr && valueToUpdate != nullptr)
         {
+            std::cout << "U's floatU1 value: " << that->floatU1 << std::endl;
+            that->floatU1 = *valueToUpdateTo;
+            std::cout << "U's floatU1 updated value: " << that->floatU1 << std::endl;
+            while( std::abs(that->floatU2 - that->floatU1) > 0.001f )
+            {
             /*
              write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
              */
             that->floatU2 += (that->floatU1 < that->floatU2) ? -1.0f : 1.0f;
             std::cout << "U's floatU2 temporary value is " << that->floatU2 << std::endl;
+            }
+            std::cout << "U's floatU2 updated value: " << that->floatU2 << std::endl;
+            return that->floatU2 * that->floatU1;
         }
-        std::cout << "U's floatU2 updated value: " << that->floatU2 << std::endl;
-        return that->floatU2 * that->floatU1;
+        std::cout << "Warning. One of passed arguments is nullptr!\n";
+        return 0.0f;
     }
 };
         
