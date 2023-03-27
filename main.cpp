@@ -37,7 +37,7 @@ struct T
 
 struct Comparator                              //4
 {
-    T* compare(const T& a, const T& b) //5
+    T* compare(T& a, T& b) //5
     {
         if( a.value < b.value ) return &a;
         if( a.value > b.value ) return &b;
