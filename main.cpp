@@ -144,27 +144,26 @@ struct Updater
 
 int main()
 {
-    T T1(5, "a");                                             //6
-    T T2(3, "b");                                             //6
+    T t1(5, "a");                                             //6
+    T t2(3, "b");                                             //6
     
     Comparator f;                                            //7
-    auto* smaller = f.compare(&T1, &T2);                              //8
+    auto* smaller = f.compare(&t1, &t2);                              //8
     if (smaller != nullptr)
     {
         std::cout << "the smaller one is << " << smaller->name << std::endl; //9
     }
-        
     else
     {
         std::cout << "smaller is nullptr because both arguments are equal or one of them is nullptr.\n";
     }
     
-    U U1;
+    U u1;
     float updatedValue = 5.f;
-    std::cout << "[static func] U1's multiplied values: " << Updater::updateValue(&U1, &updatedValue) << std::endl;                  //11
+    std::cout << "[static func] U1's multiplied values: " << Updater::updateValue(&u1, &updatedValue) << std::endl;                  //11
     
-    U U2;
-    std::cout << "[member func] U2's multiplied values: " << U2.updateValue(&updatedValue) << std::endl;
+    U u2;
+    std::cout << "[member func] U2's multiplied values: " << u2.updateValue(&updatedValue) << std::endl;
 
     std::cout << "13. ALWAYS TO CHECK IF THE POINTER IS NOT NULLPTR BEFORE USING IT!!!\n";    //13
 }
