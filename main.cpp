@@ -150,7 +150,14 @@ int main()
     Comparator f;                                            //7
     auto* smaller = f.compare(&T1, &T2);                              //8
     if (smaller != nullptr)
+    {
         std::cout << "the smaller one is << " << smaller->name << std::endl; //9
+    }
+        
+    else
+    {
+        std::cout << "smaller is nullptr because both arguments are equal or one of them is nullptr.\n";
+    }
     
     U U1;
     float updatedValue = 5.f;
