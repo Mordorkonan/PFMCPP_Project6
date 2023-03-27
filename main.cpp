@@ -37,7 +37,7 @@ struct T
 
 struct Comparator                              //4
 {
-    const T* compare(const T& a, const T& b) //5
+    T* compare(const T& a, const T& b) //5
     {
         if( a.value < b.value ) return &a;
         if( a.value > b.value ) return &b;
@@ -55,9 +55,9 @@ struct U
         std::cout << "U's floatU1 updated value: " << this->floatU1 << std::endl;
         while( std::abs(this->floatU2 - this->floatU1) > 0.001f )
         {
-        /*
-         write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
-         */
+            /*
+            write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
+            */
             this->floatU2 += (this->floatU1 < this->floatU2) ? -1.0f : 1.0f;
             std::cout << "U's floatU2 temporary value is " << this->floatU2 << std::endl;
         }
@@ -75,11 +75,11 @@ struct Updater
         std::cout << "U's floatU1 updated value: " << that.floatU1 << std::endl;
         while( std::abs(that.floatU2 - that.floatU1) > 0.001f )
         {
-        /*
-         write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
-         */
-        that.floatU2 += (that.floatU1 < that.floatU2) ? -1.0f : 1.0f;
-        std::cout << "U's floatU2 temporary value is " << that.floatU2 << std::endl;
+            /*
+            write something that makes the distance between that-><#name2#> and that-><#name1#> get smaller
+            */
+            that.floatU2 += (that.floatU1 < that.floatU2) ? -1.0f : 1.0f;
+            std::cout << "U's floatU2 temporary value is " << that.floatU2 << std::endl;
         }
         std::cout << "U's floatU2 updated value: " << that.floatU2 << std::endl;
         return that.floatU2 * that.floatU1;
