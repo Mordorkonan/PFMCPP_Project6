@@ -149,7 +149,8 @@ int main()
     
     Comparator f;                                            //7
     auto* smaller = f.compare(&T1, &T2);                              //8
-    std::cout << "the smaller one is << " << ((smaller != nullptr) ? smaller->name : "None of them") << std::endl; //9
+    if (smaller != nullptr)
+        std::cout << "the smaller one is << " << smaller->name << std::endl; //9
     
     U U1;
     float updatedValue = 5.f;
